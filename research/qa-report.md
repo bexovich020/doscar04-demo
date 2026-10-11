@@ -18,4 +18,4 @@ The production build emits a React 18 support deprecation notice for the future 
 
 The repeatable browser check is `tools/qa.cjs`. Raw JSON reports and screenshots are kept locally under the ignored `research/qa` directory.
 
-Production verification will be recorded after publishing.
+Production: https://doscar04-demo-bexxx1.vercel.app was published through the Vercel integration in a dedicated project and reached READY. The same seven-width Playwright check passed against the public URL, with zero console/page errors, all visible images loaded and the map frame present. The production hero parallax was separately verified in normal-motion mode (the image transform responds to page scrolling). WhatsApp opened the actual Doscar04 contact screen with the prepared message. Public access requires no Vercel sign-in. Cancelled requests during deliberate page/viewport changes were the only request failures.

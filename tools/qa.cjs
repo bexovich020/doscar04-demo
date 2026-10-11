@@ -3,7 +3,7 @@ const fs=require('node:fs/promises');
 const path=require('node:path');
 const assert=require('node:assert/strict');
 const base=process.env.QA_BASE_URL || 'http://127.0.0.1:3006';
-const dest=path.resolve('research/qa');
+const dest=path.resolve(process.env.QA_OUTPUT_DIR || 'research/qa');
 (async()=>{
  await fs.mkdir(dest,{recursive:true});
  const browser=await chromium.launch({headless:true,executablePath:process.env.QA_BROWSER_PATH || undefined});
@@ -16,6 +16,7 @@ const dest=path.resolve('research/qa');
  async function fit(width,height){await page.setViewportSize({width,height});await page.goto(base,{waitUntil:'networkidle'});await page.waitForTimeout(1100);const dimensions=await page.evaluate(()=>({width:innerWidth,client:document.documentElement.clientWidth,scroll:document.documentElement.scrollWidth}));assert.ok(dimensions.scroll<=dimensions.client,`overflow at ${width}`);assert.equal(await page.locator('h1').count(),1); const cta=await page.getByRole('link',{name:'Записаться в WhatsApp',exact:true}).first().boundingBox();assert.ok(cta.y+cta.height<height,`hero CTA below viewport at ${width}`);report.viewports.push({...dimensions,height});await page.screenshot({path:path.join(dest,`hero-${width}.png`)});}
  for(const [w,h] of [[1440,900],[1920,1080],[1280,800],[768,1024],[390,844],[375,812],[320,740]])await fit(w,h);
  await page.setViewportSize({width:1440,height:900});await page.goto(base,{waitUntil:'networkidle'});
+ await page.mouse.move(400,250);await page.mouse.wheel(0,350);await page.waitForTimeout(700);report.parallax=await page.locator('.hero-image').evaluate(el=>getComputedStyle(el).transform);assert.notEqual(report.parallax,'none');report.interactions.push('Desktop hero parallax responds to scrolling in normal-motion mode');await page.mouse.wheel(0,-350);await page.waitForTimeout(600);
  for(const id of ['services','work','reviews','contact']){await page.locator(`#${id}`).scrollIntoViewIfNeeded();await page.waitForTimeout(700);await page.screenshot({path:path.join(dest,`${id}-desktop.png`)});}
  for(let i=0;i<6;i++){const trigger=page.locator(`#service-trigger-${i}`);await trigger.click();if(await trigger.getAttribute('aria-expanded')==='false')await trigger.click();assert.equal(await trigger.getAttribute('aria-expanded'),'true');await page.locator(`#service-content-${i}`).waitFor({state:'visible'});const href=await page.locator(`#service-content-${i} a`).getAttribute('href');assert.ok(href.startsWith('https://wa.me/77082196485?text='));assert.ok(decodeURIComponent(href).includes('Автомобиль:'));await trigger.click();assert.equal(await trigger.getAttribute('aria-expanded'),'false');}
  report.interactions.push('All 6 service panels open/close and contain the correct WhatsApp number and service message');

@@ -1,4 +1,4 @@
-export const SITE_URL = 'https://doscar04-demo.vercel.app';
+export const SITE_URL = 'https://doscar04-demo-bexxx1.vercel.app';
 export const studio = {
   name: 'DOSCAR04', city: 'Актобе', address: 'ул. Тургенева, 93Б',
   phone: '+77082196485', displayPhone: '+7 708 219 64 85',

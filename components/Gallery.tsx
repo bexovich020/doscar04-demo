@@ -5,7 +5,7 @@ import { ArrowUpRight, Expand, X } from 'lucide-react';
 import { studio } from '@/lib/studio';
 const photos=[
   {src:'/images/business/detailing-work.webp',title:'Внимание к поверхности',category:'ДЕТЕЙЛИНГ',alt:'Чёрный Toyota во время ухода за кузовом в Doscar'},
-  {src:'/images/business/workshop-interior.webp',title:'Внутри DOSCAR04',category:'СЕРВИС',alt:'Lexus в реальном сервисном боксе Doscar'},
+  {src:'/images/business/workshop-interior.webp',title:'Внутри DOSCAR04',category:'СЕРВИС',alt:'Автомобиль в реальном сервисном боксе Doscar'},
   {src:'/images/business/doscar-cars-night.webp',title:'Автомобили в сервисе',category:'DOSCAR04',alt:'Автомобили у сервиса Doscar вечером'},
 ];
 export default function Gallery(){

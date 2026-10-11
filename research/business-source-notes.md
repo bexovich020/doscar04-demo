@@ -40,7 +40,7 @@ All selected photos are from the exact 2GIS business album. Most carry the visib
 | frontage.webp | 1168×1600 | 164218 | Actual red frontage, address/location section; portrait crop |
 | doscar-cars-night.webp | 1400×2489 | 237968 | Two cars outdoors at night, selected actual-business gallery photo |
 | detailing-work.webp | 720×1280 | 160038 | Actual black Toyota being washed/foamed; detailing section |
-| workshop-interior.webp | 1400×1867 | 178164 | Actual workshop with Lexus; workshop section |
+| workshop-interior.webp | 1400×1867 | 178164 | Actual workshop with an automobile; workshop section |
 | oil-selection.webp | 1400×788 | 114218 | Landscape oil range, service/products strip |
 | oil-shelf.webp | 1280×720 | 133598 | Landscape oil shelf, maintenance section |
 | oil-display.webp | 1206×1150 | 122296 | Bardahl retail display |

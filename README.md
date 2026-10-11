@@ -33,13 +33,13 @@ Hours differ between 2GIS and Instagram; the contact section shows both and asks
 Start the app on port 3006, or set `QA_BASE_URL` to a running local/production URL:
 
 ```sh
-QA_BASE_URL=https://doscar04-demo.vercel.app node tools/qa.cjs
+QA_BASE_URL=https://doscar04-demo-bexxx1.vercel.app node tools/qa.cjs
 ```
 
 PowerShell:
 
 ```powershell
-$env:QA_BASE_URL='https://doscar04-demo.vercel.app'
+$env:QA_BASE_URL='https://doscar04-demo-bexxx1.vercel.app'
 $env:QA_BROWSER_PATH='C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe'
 node tools/qa.cjs
 ```
@@ -48,4 +48,4 @@ node tools/qa.cjs
 
 ## Demo publishing
 
-The production URL is https://doscar04-demo.vercel.app. GitHub and Vercel use the dedicated `doscar04-demo` project. The demo is marked `noindex, nofollow` and has a small disclosure in the footer. Update the dated facts and confirm the schedule with the owner before treating it as an official business website.
+The production URL is https://doscar04-demo-bexxx1.vercel.app. GitHub and Vercel use the dedicated `doscar04-demo` project. The demo is marked `noindex, nofollow` and has a small disclosure in the footer. Update the dated facts and confirm the schedule with the owner before treating it as an official business website.
