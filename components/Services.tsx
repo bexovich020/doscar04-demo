@@ -1,0 +1,16 @@
+'use client';
+import { useState } from 'react';
+import { ArrowUpRight, Plus, Minus, Droplets, Sparkles, Zap, Layers, Lightbulb, Volume2, MessageCircle } from 'lucide-react';
+import { whatsappLink } from '@/lib/studio';
+const services = [
+  {title:'Замена масла',tag:'ОБСЛУЖИВАНИЕ',icon:Droplets,description:'Аппаратная замена масла. Автомасла, масла на розлив и специальные жидкости — в сервисе.',items:['Аппаратная замена','Моторные масла','Спецжидкости']},
+  {title:'Детейлинг',tag:'ВНЕШНИЙ ВИД',icon:Sparkles,description:'Полировка кузова и химчистка салона. Обсудите с мастером состояние автомобиля и желаемый результат.',items:['Полировка','Химчистка салона','Уход за автомобилем']},
+  {title:'Автоэлектрика',tag:'ДИАГНОСТИКА',icon:Zap,description:'Компьютерная диагностика, ремонт электронных систем, стартеров и генераторов. Установка автосигнализаций.',items:['Компьютерная диагностика','Электронные системы','Стартеры и генераторы']},
+  {title:'Тонировка и плёнка',tag:'ЗАЩИТА',icon:Layers,description:'Тонирование автостёкол и нанесение бронеплёнки. Уточните варианты материала и объём работ для вашего автомобиля.',items:['Тонировка стёкол','Бронеплёнка','Нанесение плёнки']},
+  {title:'Свет и оснащение',tag:'КОМФОРТ',icon:Lightbulb,description:'BI-LED, установка и ремонт автооптики. Android-мультимедиа, камеры 360°.',items:['BI-LED и автооптика','Android-мультимедиа','Камеры 360°']},
+  {title:'Шумоизоляция',tag:'САЛОН',icon:Volume2,description:'Шумоизоляция и работы с салоном. Расскажите, что хотите изменить — обсудим материалы и подходящий объём работ.',items:['Шумоизоляция салона','Перетяжка','Ремонт салона']},
+];
+export default function Services() {
+  const [active,setActive]=useState<number|null>(0);
+  return <section id="services" className="services light-section" aria-labelledby="services-title"><div className="wrap services-grid"><div className="section-intro"><p className="eyebrow">ПОД ОДНОЙ КРЫШЕЙ</p><h2 id="services-title">Всё, что<br/>нужно <span>авто.</span></h2><p className="body-copy">Техническое обслуживание. <br/>Внешний вид. Комфорт. <br/>Выберите, с чего начнём.</p><a className="text-link dark-link" href={whatsappLink()} target="_blank" rel="noopener noreferrer">Помочь с выбором <ArrowUpRight size={18}/></a><div className="service-note"><MessageCircle size={18}/><p>Стоимость и время работ уточним<br/>для вашего автомобиля.</p></div></div><div className="service-list">{services.map((s,i)=>{const Icon=s.icon; const open=active===i;return <article key={s.title} className={`service-row ${open?'is-open':''}`}><h3><button onClick={()=>setActive(open?null:i)} aria-expanded={open} aria-controls={`service-content-${i}`} id={`service-trigger-${i}`}><Icon className="service-icon" size={25} strokeWidth={1.35}/><span>{s.title}<small>{s.tag}</small></span><span className="service-plus">{open?<Minus size={21}/>:<Plus size={21}/>}</span></button></h3><div hidden={!open} id={`service-content-${i}`} role="region" aria-labelledby={`service-trigger-${i}`} className="service-content"><p>{s.description}</p><ul>{s.items.map(item=><li key={item}>{item}</li>)}</ul><a href={whatsappLink(s.title)} target="_blank" rel="noopener noreferrer">Уточнить стоимость <ArrowUpRight size={16}/></a></div></article>})}</div></div></section>;
+}
